@@ -21,7 +21,7 @@ export default function ProjectView({infoItems}: {
 }){
     return(
         <>
-            <div className="flex flex-col p-16">
+            <div className="flex flex-col pt-8 px-4">
                 <ProjectPicture/>
                 <ProjectInfo infoItems={infoItems}/>
             </div>

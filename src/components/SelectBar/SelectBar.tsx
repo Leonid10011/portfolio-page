@@ -14,7 +14,7 @@ export default function SelectBar({items, selectTab}: {
     selectTab: (id: number) => void
 }){
     return(
-        <div className="flex relative bg-black text-white h-12 border-b-2 border-black">
+        <div className="flex relative bg-black text-white h-12 border-b-2 border-gray-500 shadow-md">
             {items.map( item => (
                 <SelectItem item={item} key={item.id} handleSelection={selectTab}/>
             ))}
@@ -34,7 +34,7 @@ function SelectItem({item, handleSelection}: {
     }
 
     return(
-        <div  className="border-2 border-white w-full text-center" onClick={onClick} data-id={item.id}>
+        <div  className="border-2 border-white w-full text-center hover:bg-gray-700" onClick={onClick} data-id={item.id}>
             {item.name}
         </div>
     );

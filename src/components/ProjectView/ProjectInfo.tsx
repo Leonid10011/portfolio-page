@@ -8,7 +8,7 @@ export default function ProjectInfo({infoItems} : {
     infoItems: InfoItem[]
 }){
     return(
-        <div className="border-b-4 border-l-4 border-r-4 border-black rounded-b-md">
+        <div className="border-l-2 border-gray-300 rounded-b-md shadow-lg bg-gray-50 p-4">
             {infoItems.map(infoItem => (
                 <ProjectInfoItem key={infoItem.id} infoItem={infoItem}/>
             ))}
@@ -20,11 +20,11 @@ function ProjectInfoItem({infoItem}: {
     infoItem: InfoItem
 }){
     return(
-        <div className="flex my-1">
-            <div className=" w-1/3 whitespace-pre-line font-semibold">
-                <span>{infoItem.title + ":"}</span>
+        <div className="w-full flex items-center py-2 text-base hover:bg-gray-100 transition-colors">
+            <div className="min-w-min w-1/3 font-semibold text-gray-700 mr-2">
+                {infoItem.title + ":"}
             </div>
-            <div className="w-full font-thin">
+            <div className="w-2/3 break-words text-gray-600 text-left">
                 {infoItem.text}
             </div>
         </div>

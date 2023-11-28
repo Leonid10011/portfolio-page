@@ -4,11 +4,12 @@
  * On larger screens we show the navbar items.
  * The Dropdown Menu for the projects resides in the ProjectsMenuBox Component, which shows its elements beneath the button and on smaller screens shows them on the right side.
  */
-import { useState } from "react";
+import { Fragment, useEffect, useRef, useState } from "react";
 import DropdownMenu from "../DropdownMenu/DropdownMenu";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 import { Link } from "react-router-dom";
+import { Transition } from "@headlessui/react";
 /**
  * Needs to be replaced and combined with the items
  */
@@ -25,22 +26,42 @@ const items = [
 
 export default function Navbar(){
     const [isOpen, setIsOpen] = useState(false);
+    const navbarRef = useRef<HTMLDivElement>(null); // reference to the navbar
+
+    const handleOpen = () => {
+        setIsOpen(!isOpen);
+    }
+
+    useEffect(() => {
+        // Function that checks if clicked outside the navbar
+        function handleClickOutside(event: MouseEvent) {
+            if(isOpen && navbarRef.current && !navbarRef.current.contains(event.target as Node)){
+                setIsOpen(false);
+            }
+        }
+
+        // Bind the event listener
+        document.addEventListener('mousedown', handleClickOutside);
+        return() => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        }
+    }, [isOpen])
 
     return (
-        <div className="py-2 border-b-2 border-black">
+        <div ref={navbarRef} className="py-2 shadow-md border-b-2 border-gray-500">
             <div className="w-full">
                 <div className="sm:hidden">
-                    <button onClick={() => setIsOpen(!isOpen)} className=" pl-2">
+                    <button onClick={handleOpen} className=" pl-2">
                         <FontAwesomeIcon icon={faBars} />
                     </button>
                 </div>
             </div>
             <div className="w-full">
                 <ul className={`${isOpen ? 'block' : 'hidden' } sm:flex flex-row justify-around w-full text-center`}>
-                    <li className="w-32 bg-white"><Link to={"/"} >Home</Link></li>
-                    <li className="w-32 bg-white"><Link to={"/contact"} >Contact</Link></li>
+                    <li className="w-32 bg-white"><Link to={"/"} onClick={handleOpen} >Home</Link></li>
+                    <li className="w-32 bg-white"><Link to={"/contact"} onClick={handleOpen} >Contact</Link></li>
                     <li className="w-32 bg-white">
-                        <DropdownMenu title="Projects" dropdowns={items} />
+                        <DropdownMenu title="Projects" dropdowns={items} handleOpen={() => setIsOpen(!isOpen)} />
                     </li>
                 </ul>
             </div>

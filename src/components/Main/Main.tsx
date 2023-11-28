@@ -1,5 +1,5 @@
 import { useState } from "react";
-import ProjectView from "../ProjectView/ProjectView";
+import ProjectView, { Item } from "../ProjectView/ProjectView";
 import SelectBar from "../SelectBar/SelectBar";
 
 /**
@@ -19,6 +19,56 @@ const items = [
     }
   ]
 
+const projectItems = [
+    {
+        id: 0,
+        info: [{
+            id: 0,
+            title: "Name",
+            text: "Project 1"
+        },
+        {
+            id:1,
+            title: "Tech used",
+            text: "Description Tiiiiiiittt sssssssssssssssssssssss ssssffff"
+        },
+        {
+            id:2,
+            title: "Description",
+            text: "Description"
+        },
+        {
+            id:3,
+            title: "Github",
+            text: "Description"
+        }]
+    },
+    {
+        id: 1,
+        info: [{
+            id: 0,
+            title: "Name",
+            text: "Project 2"
+        },
+        {
+            id:1,
+            title: "Tech used",
+            text: "Description Tiiiiiiittt sssssssssssssssssssssss ssssffff"
+        },
+        {
+            id:2,
+            title: "Description",
+            text: "Description"
+        },
+        {
+            id:3,
+            title: "Github",
+            text: "Description"
+        }]
+    },
+
+]
+
 const infoItems = [
     {
         id: 0,
@@ -28,7 +78,7 @@ const infoItems = [
     {
         id:1,
         title: "Tech used",
-        text: "Description\nTesting multiple linefffffffffffffffffffffffffffffffffffffffffffffffffs"
+        text: "Description Tiiiiiiittt sssssssssssssssssssssss ssssffff"
     },
     {
         id:2,
@@ -45,11 +95,16 @@ const infoItems = [
 
 export default function Main(){
     const [activeTab, setActiveTab] = useState<number>(0);
+    // Get the id and info from one project
+    const names: Item[] = projectItems.map(item => {
+        const nameInfo = item.info.find(infoItem => infoItem.title === "Name");
+        return {id: item.id,  name: nameInfo!.text};
+    });
 
     return(
         <>
-            <SelectBar items={items} selectTab={setActiveTab}/>
-            <ProjectView infoItems={infoItems}/>
+            <SelectBar items={names} selectTab={setActiveTab}/>
+            <ProjectView infoItems={projectItems[activeTab].info}/>
         </>
     );
 }
