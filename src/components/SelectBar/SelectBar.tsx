@@ -1,10 +1,9 @@
 /**
  * This component is a list of clickable tabs, which will control which project is showed in the main content view
  */
-interface Item {
-    id: number,
-    name: string,
-}
+
+import { Item } from "../ProjectView/ProjectView";
+
 /**
  * 
  * @param items: An array of items which should be displayed in the selected Bar.
@@ -15,7 +14,7 @@ export default function SelectBar({items, selectTab}: {
     selectTab: (id: number) => void
 }){
     return(
-        <div className="flex relative bg-slate-500 h-12">
+        <div className="flex relative bg-black text-white h-12 border-b-2 border-black">
             {items.map( item => (
                 <SelectItem item={item} key={item.id} handleSelection={selectTab}/>
             ))}
@@ -35,8 +34,8 @@ function SelectItem({item, handleSelection}: {
     }
 
     return(
-        <div  className="border-2 w-full text-center" onClick={onClick} data-id={item.id}>
-            {item.name}
+        <div  className="border-2 border-white w-full text-center" onClick={onClick} data-id={item.id}>
+            {item.title}
         </div>
     );
 }
