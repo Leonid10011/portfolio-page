@@ -1,5 +1,9 @@
 import { InfoItem } from "./ProjectView";
-
+/**
+ * This component will display some notable information about the selected project in the project view.
+ * It maps each infoItem (consisting of the notable information) onto the ProjectInfoItem component.
+ * @param infoItems: contains the info title, its description and a unique id 
+ */
 export default function ProjectInfo({infoItems} : {
     infoItems: InfoItem[]
 }){

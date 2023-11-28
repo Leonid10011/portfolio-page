@@ -1,3 +1,7 @@
+/**
+ * This component show a  picture of the corresponding project.
+ * @returns 
+ */
 export default function ProjectPicture() {
     return(
         <div className="flex justify-center border-t-4 border-l-4 border-r-4 p-2 border-black rounded-t-md border-b-2">

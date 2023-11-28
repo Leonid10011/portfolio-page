@@ -1,13 +1,13 @@
 import './App.css'
 import Navbar from './components/Navbar/Navbar'
-import Main from './components/Main/Main'
+import { Outlet } from 'react-router'
 
 export default function App() {
 
   return (
     <div className='w-full'>
       <Navbar/>
-      <Main/>
+      <Outlet/>
     </div>
   )
 }

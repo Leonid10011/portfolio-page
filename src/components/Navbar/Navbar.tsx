@@ -8,15 +8,18 @@ import { useState } from "react";
 import DropdownMenu from "../DropdownMenu/DropdownMenu";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from '@fortawesome/free-solid-svg-icons';
-
+import { Link } from "react-router-dom";
+/**
+ * Needs to be replaced and combined with the items
+ */
 const items = [
     {
         name: "Project Portfolio",
-        link: "/"
+        link: "/projects"
     },
     {
         name: "E-commerce App",
-        link: "/"
+        link: "/projects"
     }
 ]
 
@@ -34,8 +37,8 @@ export default function Navbar(){
             </div>
             <div className="w-full">
                 <ul className={`${isOpen ? 'block' : 'hidden' } sm:flex flex-row justify-around w-full text-center`}>
-                    <li className="w-32 bg-white">Home</li>
-                    <li className="w-32 bg-white">Contact</li>
+                    <li className="w-32 bg-white"><Link to={"/"} >Home</Link></li>
+                    <li className="w-32 bg-white"><Link to={"/contact"} >Contact</Link></li>
                     <li className="w-32 bg-white">
                         <DropdownMenu title="Projects" dropdowns={items} />
                     </li>
@@ -44,3 +47,4 @@ export default function Navbar(){
         </div>
     );
 }
+

@@ -1,4 +1,5 @@
 import { Menu } from "@headlessui/react";
+import { Link } from "react-router-dom";
 
 interface Dropdown {
     name: string,
@@ -19,12 +20,12 @@ export default function({title, dropdowns}: {
                     {dropdowns.map(item => (
                         <Menu.Item key={item.name}>
                             {({active}) => (
-                                <a
+                                <Link
                                     className={`${active && 'bg-blue-500'}`}
-                                    href="link"
+                                    to={item.link}
                                 >
                                     {item.name}
-                                </a>
+                                </Link>
                             )}
                         </Menu.Item>
                     ))}
