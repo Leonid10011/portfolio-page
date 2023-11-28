@@ -15,7 +15,7 @@ export default function({title, dropdowns}: {
                 <Menu.Button className={`w-full`}>
                     {title}
                 </Menu.Button>
-                <Menu.Items className={`flex flex-col w-full absolute left-32 top-0 sm:left-0 sm:top-6`}>
+                <Menu.Items className={`flex flex-col w-full absolute left-32 top-0 sm:left-0 sm:top-6 z-10 bg-white`}>
                     {dropdowns.map(item => (
                         <Menu.Item key={item.name}>
                             {({active}) => (
