@@ -35,7 +35,7 @@ function SelectItem({item, handleSelection}: {
 
     return(
         <div  className="border-2 border-white w-full text-center" onClick={onClick} data-id={item.id}>
-            {item.title}
+            {item.name}
         </div>
     );
 }

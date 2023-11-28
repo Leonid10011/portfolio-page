@@ -1,7 +1,7 @@
-import { Item } from "./ProjectView";
+import { InfoItem } from "./ProjectView";
 
 export default function ProjectInfo({infoItems} : {
-    infoItems: Item[]
+    infoItems: InfoItem[]
 }){
     return(
         <div className="border-b-4 border-l-4 border-r-4 border-black rounded-b-md">
@@ -13,7 +13,7 @@ export default function ProjectInfo({infoItems} : {
 }
 
 function ProjectInfoItem({infoItem}: {
-    infoItem: Item
+    infoItem: InfoItem
 }){
     return(
         <div className="flex my-1">
